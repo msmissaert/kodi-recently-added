@@ -1,4 +1,4 @@
-# Kodi Recently Added Media for Home Assistant
+# Kodi next up Media for Home Assistant
 
 [![](https://img.shields.io/github/release/boralyl/kodi-recently-added/all.svg?style=for-the-badge)](https://github.com/boralyl/kodi-recently-added/releases)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge)](https://github.com/hacs/integration)
@@ -6,9 +6,9 @@
 [![](https://img.shields.io/github/workflow/status/boralyl/kodi-recently-added/Python%20package?style=for-the-badge)](https://github.com/boralyl/kodi-recently-added/actions)
 
 Home Assistant component to feed [Upcoming Media Card](https://github.com/custom-cards/upcoming-media-card) with
-Kodi's recently added media.
+Kodi's next up media.
 
-![Kodi Recently Added Media](https://raw.githubusercontent.com/boralyl/kodi-recently-added/master/assets/example.png)
+![Kodi next up Media](https://raw.githubusercontent.com/boralyl/kodi-recently-added/master/assets/example.png)
 
 # Table of Contents
 
@@ -31,7 +31,7 @@ Kodi's recently added media.
 
 ### HACS Install
 
-1. Search for `Kodi Recently Added Component` under `Integrations` in the HACS Store tab.
+1. Search for `Kodi next up Component` under `Integrations` in the HACS Store tab.
 2. Install the card: [Upcoming Media Card](https://github.com/custom-cards/upcoming-media-card)
 3. ~~Add the code to your `configuration.yaml` using the config options below. [See Conifuring via YAML](#configuring-via-yaml).~~ (This is deprecated and it's recommended to add the integration via the Home Assistant Integrations if you are using >= v2.0.0. See [Configuring via Integrations](#configuring-via-integrations))
 4. Add the code for the card to your `ui-lovelace.yaml`, or via the lovelace dashboard.
@@ -52,30 +52,24 @@ Kodi's recently added media.
 | key          | required | default | description                                                                                                         |
 | ------------ | -------- | ------- | ------------------------------------------------------------------------------------------------------------------- |
 | host         | yes      | --      | The host Kodi is running on. This is the same host that was configured when adding the Kodi integration via the UI. |
-| hide_watched | no       | false   | Indicates if watched media should be skipped or not.                                                                |
-
 The host is the same host you entered when configuring Kodi via the integrations page.
 
 #### Sample configuration.yaml:
 
 ```yaml
 sensor:
-  - platform: kodi_recently_added
+  - platform: kodi_next_up
     host: 10.1.1.2
-    hide_watched: true
-
-  - platform: kodi_recently_added
-    host: 10.1.1.3
+  
 ```
 
 ### Configuring via Integrations
 
 1. Navigate to the Integrations page under the Configuration section.
-2. Click the button to add a new integration and search for `Kodi Recently Added Media`.
+2. Click the button to add a new integration and search for `Kodi next up Media`.
 3. Select which instance of Kodi you would like to use and click Submit.
-4. 2 entities will automatically be created. One tracks your recently added tv shows and
-   is named `sensor.kodi_recently_added_tv`. The other tracks your recently added movies
-   and is named `sensor.kodi_recently_added_movies`.
+4. 2 entities will automatically be created. One tracks your next up tv shows and
+   is named `sensor.kodi_next_up_episodes`. 
 
 An `Options` button will appear on the integration. Clicking this will allow you to
 toggle additional options. Currently the only option is whether or not the sensor should
@@ -88,13 +82,9 @@ ignore watched media or not. By default it does not.
 ```yaml
 - type: custom:upcoming-media-card
   entity: sensor.kodi_recently_added_tv
-  title: Recently Added Episodes
+  title: next up Episodes
   image_style: fanart
 
-- type: custom:upcoming-media-card
-  entity: sensor.kodi_recently_added_movies
-  title: Recently Added Movies
-  image_style: fanart
 ```
 
 ## Upgrading from configuration.yaml to UI Integration
@@ -103,10 +93,10 @@ ignore watched media or not. By default it does not.
    platform.
 2. Restart Home Assistant.
 3. Navigate to the Integrations page under the Configuration section.
-4. Click the button to add a new integration and search for `Kodi Recently Added Media`.
+4. Click the button to add a new integration and search for `Kodi next up Media`.
 5. Select which instance of Kodi you would like to use and click Submit.
-6. 2 entities will automatically be created. One tracks your recently added tv shows and
-   is named `sensor.kodi_recently_added_tv`. The other tracks your recently added movies
+6. 2 entities will automatically be created. One tracks your next up tv shows and
+   is named `sensor.kodi_recently_added_tv`. The other tracks your next up movies
    and is named `sensor.kodi_recently_added_movies`.
 
 ## Known Issues
