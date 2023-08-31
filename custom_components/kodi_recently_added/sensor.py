@@ -7,15 +7,14 @@ from homeassistant.const import CONF_HOST
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 
-from .const import CONF_HIDE_WATCHED, DOMAIN
-from .entities import KodiRecentlyAddedMoviesEntity, KodiRecentlyAddedTVEntity
+from .const import DOMAIN
+from .entities import KodiNextUpTVEntity
 from .utils import find_matching_config_entry, find_matching_config_entry_for_host
 
 PLATFORM_SCHEMA = vol.Any(
     PLATFORM_SCHEMA.extend(
         {
             vol.Required(CONF_HOST): cv.string,
-            vol.Optional(CONF_HIDE_WATCHED, default=False): bool,
         }
     ),
 )
@@ -44,13 +43,8 @@ async def async_setup_entry(
         return
 
     kodi = data[DATA_KODI]
-    tv_entity = KodiRecentlyAddedTVEntity(
-        kodi, kodi_config_entry.data, hide_watched=conf.get(CONF_HIDE_WATCHED, False)
-    )
-    movies_entity = KodiRecentlyAddedMoviesEntity(
-        kodi, kodi_config_entry.data, hide_watched=conf.get(CONF_HIDE_WATCHED, False)
-    )
-    async_add_entities([tv_entity, movies_entity])
+    tv_entity = KodiNextUpTVEntity(kodi, kodi_config_entry.data)
+    async_add_entities([tv_entity])
 
 
 async def async_setup_platform(
@@ -58,7 +52,6 @@ async def async_setup_platform(
 ) -> None:
     """Setup sensors from yaml configuration."""
     host = config[CONF_HOST]
-    hide_watched = config[CONF_HIDE_WATCHED]
     config_entry = find_matching_config_entry_for_host(hass, host)
     if config_entry is None:
         hosts = [
@@ -85,6 +78,5 @@ async def async_setup_platform(
         return
     kodi = data[DATA_KODI]
 
-    tv_entity = KodiRecentlyAddedTVEntity(kodi, config_entry.data, hide_watched)
-    movies_entity = KodiRecentlyAddedMoviesEntity(kodi, config_entry.data, hide_watched)
-    async_add_entities([tv_entity, movies_entity])
+    tv_entity = KodiNextUpTVEntity(kodi, config_entry.data)
+    async_add_entities([tv_entity])
