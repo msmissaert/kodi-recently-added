@@ -1,7 +1,7 @@
 {
   "config": {
     "error": {
-      "kodi_not_configured": "You must fist add Kodi via the integrations page."
+      "kodi_not_configured": "You must first add Kodi via the integrations page."
     },
     "step": {
       "user": {
@@ -16,11 +16,8 @@
   "options": {
     "step": {
       "init": {
-        "title": "Kodi Recently Added Media Options",
-        "description": "Additional settings for the component.",
-        "data": {
-          "hide_watched": "Exclude media that is marked as watched."
-        }
+        "title": "Kodi Next Up Episodes Options",
+        "description": "Additional settings for the component."
       }
     }
   }

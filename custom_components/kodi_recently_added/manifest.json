@@ -2,11 +2,11 @@
   "codeowners": ["@boralyl"],
   "config_flow": true,
   "dependencies": ["kodi"],
-  "documentation": "https://github.com/boralyl/kodi-recently-added",
-  "issue_tracker": "https://github.com/boralyl/kodi-recently-added/issues",
+  "documentation": "https://github.com/msmissaert/kodi-recently-added",
+  "issue_tracker": "https://github.com/msmissaert/kodi-recently-added/issues",
   "iot_class": "local_polling",
-  "domain": "kodi_recently_added",
-  "name": "Kodi Recently Added Media",
+  "domain": "kodi_next_up",
+  "name": "Kodi Next Up Media",
   "requirements": [],
-  "version": "2.0.3"
+  "version": "0.1.0"
 }

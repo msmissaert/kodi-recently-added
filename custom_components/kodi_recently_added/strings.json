@@ -13,16 +13,5 @@
       }
     }
   },
-  "options": {
-    "step": {
-      "init": {
-        "title": "Kodi Recently Added Media Options",
-        "description": "Additional settings for the component.",
-        "data": {
-          "hide_watched": "Exclude media that is marked as watched."
-        }
-      }
-    }
-  },
-  "title": "Kodi Recently Added Media"
+  "title": "Kodi Next Up Media"
 }

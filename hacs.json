@@ -1,9 +1,9 @@
 {
   "config_flow": true,
-  "documentation": "https://github.com/boralyl/kodi-recently-added",
+  "documentation": "https://github.com/msmissaert/kodi-recently-added",
   "domains": ["sensor"],
   "homeassistant": "0.115.0",
   "iot_class": "Local Polling",
-  "name": "Kodi Recently Added Media",
+  "name": "Kodi Next Up Episodes",
   "render_readme": true
 }
