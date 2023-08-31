@@ -3,7 +3,7 @@ from unittest import mock
 
 import pykodi
 
-from custom_components.kodi_recently_added.entities import KodiMediaEntity
+from custom_components.kodi_next_up.entities import KodiMediaEntity
 
 
 def test_kodi_media_entity_init_base_web_url_https():

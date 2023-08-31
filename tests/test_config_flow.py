@@ -3,12 +3,12 @@ from unittest import mock
 
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.kodi_recently_added.const import (
+from custom_components.kodi_next_up.const import (
     CONF_HIDE_WATCHED,
     CONF_KODI_INSTANCE,
     DOMAIN,
 )
-from custom_components.kodi_recently_added.utils import KODI_DOMAIN
+from custom_components.kodi_next_up.utils import KODI_DOMAIN
 
 
 async def test_flow_init_kodi_not_configured(hass):
