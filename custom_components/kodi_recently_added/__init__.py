@@ -1,15 +1,14 @@
-"""The Kodi Recently Added integration."""
+"""The Kodi Next Up integration."""
 
 import asyncio
 import logging
 
 from homeassistant import config_entries, core
 
-from .const import CONF_HIDE_WATCHED, DOMAIN
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 PLATFORMS = ["sensor"]
-
 
 async def async_setup_entry(
     hass: core.HomeAssistant, entry: config_entries.ConfigEntry
@@ -18,14 +17,13 @@ async def async_setup_entry(
     kodi_entry_id = entry.data["kodi_entry_id"]
     unsub_options_update_listener = entry.add_update_listener(options_update_listener)
     hass.data[DOMAIN][entry.entry_id] = {
-        "hide_watched": entry.options.get(CONF_HIDE_WATCHED, False),
         "kodi_config_entry_id": kodi_entry_id,
         "unsub_options_update_listener": unsub_options_update_listener,
     }
 
     if not entry.unique_id:
         hass.config_entries.async_update_entry(
-            entry, unique_id="kodi_recently_added_media"
+            entry, unique_id="kodi_next_up_episodes"
         )
 
     for component in PLATFORMS:
@@ -34,7 +32,6 @@ async def async_setup_entry(
         )
 
     return True
-
 
 async def async_unload_entry(
     hass: core.HomeAssistant, entry: config_entries.ConfigEntry
@@ -57,15 +54,13 @@ async def async_unload_entry(
 
     return unload_ok
 
-
 async def options_update_listener(
     hass: core.HomeAssistant, config_entry: config_entries.ConfigEntry
 ):
     """Handle options update."""
     await hass.config_entries.async_reload(config_entry.entry_id)
 
-
 async def async_setup(hass: core.HomeAssistant, config: dict) -> bool:
-    """Set up the Kodi Recently Added Media component from yaml configuration."""
+    """Set up the Kodi Next Up component from yaml configuration."""
     hass.data.setdefault(DOMAIN, {})
     return True
